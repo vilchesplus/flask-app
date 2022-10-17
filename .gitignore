@@ -22,6 +22,4 @@ node_modules
 .#*
 
 *.yaml
-*.py
-!*api-scraper.py
-!*api.py
+*.py~
