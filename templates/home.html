@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Calidad del Aire</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<script>
+function myFunction() {
+  $.ajax({
+              url: "/join",
+      type: "POST"
+              
+          }).done(function(response) {
+              var html= "<br><br><br><p> <b> Datos obtenidos: <b><p>";
+	      response =response.result;
+                 $.each(response,function(key,val){
+                 console.log(val);
+                    html+="<p>"+val+"<p>"
+                });
+              
+              
+              $(".show-data").append(html);
+	     
+            });
+};
+</script>
+
+<script>
+function checkeo() {
+
+
+    $.ajax({
+              url: "/test",
+      type: "POST"
+              
+           }).done(function(response) {
+             var html= "<br><br><br><p> <b> Últimas cargas según consulta SQL: <b><p>";
+	      response = response.resultado;
+                 $.each(response,function(key){
+                 console.log(key);
+                    html+="<p>"+key+"<p>"
+                    
+	  });
+              
+              
+              $(".show-data").append(html);
+	     
+            });
+};
+  
+</script>
+
+<script>
+function pool() {
+
+
+    $.ajax({
+              url: "/pool",
+      type: "POST"
+              
+           }).done(function(response) {
+               var html= "<br><br><br><p> <b> Pool de conexiones actual: <b><p> <p><b> Conexiones activas, reservadas para Super user, y límite máximo <p><b> ";
+	      response = response.resultado;
+               $.each(response,function(key,val){
+                 console.log(val);
+                    html+="<p>"+val+"<p>"
+                    
+	  });
+              
+              
+              $(".show-data").append(html);
+	     
+            });
+};
+  
+</script>
+
+
+<py-env>
+    - requests
+  </py-env>
+<py-script> print('Proyecto Calidad del aire')
+
+
+</py-script>
+
+<body>
+    <p>
+        Elije una de las opciones:<br><br>
+            
+            
+        <button id="clicked" onclick="myFunction()">Obtener estado de la web (ALPHA)</button>
+	 <button onclick="window.location.href='https://analisiscalidadaire.madrid.es/situacionactual';">
+      Enlace situación actual calidad del aire
+    </button>
+	<button id="clicked" onclick="checkeo()">Checkear conexión con BD</button>
+	<button id="clicked" onclick="pool()">Checkear pool de conexiones</button>
+        </p>
+    <div class="show-data" >
+    </div>
+</body>
+</html>
