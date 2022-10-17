@@ -26,3 +26,5 @@ node_modules
 prueba.py
 token.txt
 password.txt
+telegram-web-scraper-bot.py
+notifier.py
