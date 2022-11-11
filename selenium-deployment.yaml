@@ -20,7 +20,10 @@ spec:
           env: 
             - 
               name: SE_NODE_MAX_SESSIONS
-              value: "20"
+              value: "50"
+            - 
+              name: SE_NODE_SESSION_TIMEOUT
+              value: "1000"
           image: selenium/standalone-chrome
           name: selenium
           ports: 
