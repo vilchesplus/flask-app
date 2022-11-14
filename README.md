@@ -1,7 +1,7 @@
 
 
 # Utilizando Flask y Python.
-ConstrucciÃ³n de dos aplicaciones utilizando el framework Flask y generando un scrapeo de dos sitios web.
+Construcción de dos aplicaciones utilizando el framework Flask y generando un scrapeo de dos sitios web.
 
 `pip install Flask` 
 
